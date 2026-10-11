@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: job-tracker-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/jobtracker}
+    username: ${DB_USER:jobtracker}
+    password: ${DB_PASSWORD:jobtracker}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+app:
+  jwt:
+    # Override in production with a random string of at least 32 characters.
+    secret: ${JWT_SECRET:dev-only-secret-change-me-0123456789abcdef}
+    expiration-ms: 3600000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
